@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
+    "cloudinary": "^1.33.0",
     "cypress": "^10.7.0",
     "date-fns": "^2.29.3",
     "eslint": "^8.23.0",
