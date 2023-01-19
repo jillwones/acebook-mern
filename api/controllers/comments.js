@@ -32,23 +32,7 @@ const CommentsController = {
       const token = await TokenGenerator.jsonwebtoken(req.user_id)
       res.status(200).json({ comments: comments, token: token });
     });
-    
   },
-  
-
-  // GetCommentsByPostID
-
-  // Get the Comment (or Post?) ID from the request parameters 
-    
-  // Searching the posts collection for the array of comment objects 
-
-  // Populating each comment object with the author 
-
-  // Returns an array of comment objects with the message and author 
-
-
-
-  // Create a comment on a single post 
 
   Create: async (req, res) => {
     // Get the Post ID from the request parameters 
@@ -85,8 +69,20 @@ const CommentsController = {
     const savedPost = await newPost.save()
     console.log(savedPost)
     })
-    
-  }
-}
+  },
+
+  Delete: async (req, res) => {
+    const id = req.params.id
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({error: "Invalid comment id"})
+    }
+
+    const comment = await Comment.findByIdAndDelete({_id: id})
+
+    res.status(200).json({message: "Comment deleted"})
+  },
+};
+
 
 module.exports = CommentsController;
