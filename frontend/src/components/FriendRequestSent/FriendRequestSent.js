@@ -26,10 +26,14 @@ const FriendRequestSent = ({ requestedFriend, setFriendsUpdated }) => {
   
   return (
     <div className="friend-request-sent-container">
-      {/* Add profile picture of person sending friend request, with link to their profile */}
-      <Link to={`/users/${requestedFriend._id}`} className="username-link">
-        <h3 className="f-username">{ requestedFriend.name }</h3>
-      </Link>
+      <div className="f-picture-and-name-container">
+        <div className="f-profile-picture-div">
+          <img className="f-profile-picture" src={requestedFriend.profilePicture} />
+        </div>
+        <Link to={`/users/${requestedFriend._id}`} className="username-link">
+          <h3 className="f-username">{ requestedFriend.name }</h3>
+        </Link>
+      </div>
       <button className="f-cancel-friend-request-button" onClick={handleClickCancel}>Cancel friend request</button>
     </div>
   );

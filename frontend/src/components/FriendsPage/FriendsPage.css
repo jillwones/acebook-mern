@@ -103,3 +103,19 @@
   border-color: #D9D9D9;
   color: #4267B2;
 }
+
+.f-profile-picture-div {
+  border: 5px solid #eff9fd;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  margin-right: 6px;
+  float: left;
+}
+
+.f-profile-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
