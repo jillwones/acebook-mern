@@ -15,7 +15,8 @@ const Profile = () => {
   const [imageInput, setImageInput] = useState("");
   const [coverImageInput, setCoverImageInput] = useState("");
   const { user_id } = useParams();
-  const currentProfileIsUserProfile = (user_id === window.localStorage.getItem("user_id"))
+  const currentProfileIsUserProfile =
+    user_id === window.localStorage.getItem("user_id");
 
   const handleCoverImageUpload = async (event) => {
     // Event listener to get the hosted image info
@@ -310,30 +311,33 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="button-container"></div>
-                { currentProfileIsUserProfile && (
-                <div className="button-container">
-                  <UploadWidget
-                    handleImageUpload={handleProfileImageUpload}
-                    buttonText="Upload Profile Picture"
-                  />
-                  <button
-                    data-button-id="profile-image-upload"
-                    onClick={handleSubmit}
-                  >
-                    Update Profile Picture
-                  </button>
-                  <UploadWidget
-                    handleImageUpload={handleCoverImageUpload}
-                    buttonText="Upload Cover Picture"
-                  />
-                  <button
-                    data-button-id="cover-image-upload"
-                    onClick={handleCoverSubmit}
-                  >
-                    Update Cover Picture
-                  </button>
-                </div>
+                {currentProfileIsUserProfile && (
+                  <div className="button-container-2">
+                    <div className="profile-buttons">
+                      <UploadWidget
+                        handleImageUpload={handleProfileImageUpload}
+                        buttonText="Upload Profile Picture"
+                      />
+                      <button
+                        data-button-id="profile-image-upload"
+                        onClick={handleSubmit}
+                      >
+                        Confirm Profile Picture
+                      </button>
+                    </div>
+                    <div className="profile-buttons">
+                    <UploadWidget
+                      handleImageUpload={handleCoverImageUpload}
+                      buttonText="Upload Cover Picture"
+                    />
+                    <button
+                      data-button-id="cover-image-upload"
+                      onClick={handleCoverSubmit}
+                    >
+                      Confirm Cover Picture
+                    </button>
+                    </div>
+                  </div>
                 )}
               </div>
             ) : (
