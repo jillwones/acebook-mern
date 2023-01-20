@@ -157,7 +157,6 @@
 .like-count {
   display: flex;
   align-items: center;
-  margin-left: -12px;
   margin-top: 2px;
 }
 
