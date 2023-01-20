@@ -24,19 +24,24 @@ const Comment = ({ comment, setUpdated }) => {
   return (
     <div className="comment">
       <div className="comment-header">
-          <Link to={`/users/${comment.author._id}`} className="comment-author-link" >
-            <h4 className="comment-author">{comment.author.name}</h4>
-          </Link>
-        <p className="timestamp">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+          <div className="c-profile-picture-div">
+            <img className="c-profile-picture" src={comment.author.profilePicture} />
+          </div>
+          <div className="comment-name-timestamp-container">
+            <Link to={`/users/${comment.author._id}`} className="comment-author-link" >
+              <h4 className="comment-author">{comment.author.name}</h4>
+            </Link>
+            <p className="comment-timestamp">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
+          </div>
+        { createdBy === currentUser ?
+          <button className="delete-comment-button" onClick={handleDelete}>Delete</button> : null
+        }
       </div>    
       <p className="comment-message">{ comment.message }</p>
-      { createdBy === currentUser ?
-        <button className="delete-comment-button" onClick={handleDelete}>Delete</button> : null
-      }
       <img
-          className='post-image'
-          src={comment.image}
-        /> 
+        className='comment-image'
+        src={comment.image}
+      />
     </div>
   );
 }

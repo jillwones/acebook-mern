@@ -91,11 +91,20 @@ const Post = ({ post, setUpdated }) => {
             </div>
           </div>
         </div>
-        <p className="card-message">{post.message}</p>
-        <img
-          className='post-image'
-          src={post.image}
-        />      
+        <div className="message-and-delete-button-container">
+          <p className="card-message">{post.message}</p>
+          { createdBy === currentUser ?
+            <button className="delete-action-button" onClick={handleDelete}>Delete</button> : null
+          }
+        </div>
+        { post.image &&
+          <div>
+            <img
+              className='post-image'
+              src={post.image}
+            />  
+          </div>
+        }
         <div className="likes-and-comments-buttons-container">
           <div className="like-container">
             <button className="like-button" onClick={handleLike}>
@@ -119,12 +128,9 @@ const Post = ({ post, setUpdated }) => {
             )}
           </div>
             { comments.length === 0 ?
-              <button className="action-button" onClick={handleViewComments}>Add comment</button> : comments.length === 1 ?
-              <button className="action-button" onClick={handleViewComments}>{ comments.length } comment</button> :
-              <button className="action-button" onClick={handleViewComments}>{ comments.length } comments</button>
-            }
-            { createdBy === currentUser ?
-              <button className="action-button" onClick={handleDelete}>Delete</button> : null
+              <button className="comment-action-button" onClick={handleViewComments}>Add comment</button> : comments.length === 1 ?
+              <button className="comment-action-button" onClick={handleViewComments}>{ comments.length } comment</button> :
+              <button className="comment-action-button" onClick={handleViewComments}>{ comments.length } comments</button>
             }
         </div>
         { comments && (viewComments === true) &&

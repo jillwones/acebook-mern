@@ -1,6 +1,7 @@
 .comment {
-  padding-bottom: 1rem;
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-bottom: -10px;
   border-top: 1px solid #d9d9d9;
 }
 
@@ -11,24 +12,49 @@
   margin-bottom: 0.2rem;
 }
 
+.c-profile-picture-div {
+  border: 5px solid #eff9fd;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+}
+
+.c-profile-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-name-timestamp-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .comment-author {
   font-size: 0.8rem;
   font-weight: 600;
-  padding-right: 1rem;
+  padding-left: 10px;
+  white-space: nowrap;
+  margin-top: 9px;
+  margin-bottom: 2px; /* reduced value */
 }
 
-.timestamp {
+.comment-timestamp {
   font-size: 0.6rem;
   color: gray;
-  margin-left: 0.5rem;
+  padding-left: 15px;
+  margin-top: 2px; /* increased value */
 }
 
 .comment-message {
   font-size: 0.9rem;
   line-height: 1.3;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  margin-left: 4.5px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  margin-left: 8px;
 }
 
 .delete-comment-button {
@@ -36,11 +62,17 @@
   color: #fff; 
   border: none;
   padding: 0.5rem 1rem; 
-  margin-left: 1rem;
+  margin-left: auto;
   margin-right: 1rem;
-  margin-bottom: 0.5rem;
   border-radius: 4px;
   font-size: 0.6rem; 
   cursor: pointer; 
   float: right;
+}
+
+.comment-image {
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
