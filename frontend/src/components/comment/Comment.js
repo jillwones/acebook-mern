@@ -9,12 +9,13 @@ const Comment = ({ comment }) => {
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    let response = await fetch(`/comment/${comment._id}`, {
+    let response = await fetch(`/comments/${comment._id}`, {
       method: 'DELETE',
       headers: {
         "Content-Type": "application/json",
       },
     })
+  }
   
   return (
     <div className="comment">
@@ -23,17 +24,17 @@ const Comment = ({ comment }) => {
             <h4 className="comment-author">{comment.author.name}</h4>
           </Link>
         <p className="timestamp">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
-      </div>  
+      </div>    
       <p className="comment-message">{ comment.message }</p>
       { createdBy === currentUser ?
-      <button className="delete-comment-button" onClick={handleDelete}>Delete</button> : null
+        <button className="delete-comment-button" onClick={handleDelete}>Delete</button> : null
       }
       <img
           className='post-image'
           src={comment.image}
         /> 
     </div>
-  )};
+  );
 }
 
 
