@@ -2,7 +2,7 @@ import './Comment.css';
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { Link } from "react-router-dom";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, setUpdated }) => {
   const createdBy = comment.author._id;
   const currentUser = window.localStorage.getItem("user_id");
 
@@ -15,6 +15,10 @@ const Comment = ({ comment }) => {
         "Content-Type": "application/json",
       },
     })
+
+    if (response.status === 204) {
+      setUpdated(true);
+    }
   }
   
   return (

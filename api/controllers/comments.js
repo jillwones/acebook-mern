@@ -80,7 +80,7 @@ const CommentsController = {
 
     const comment = await Comment.findByIdAndDelete({_id: id})
 
-    res.status(200).json({message: "Comment deleted"})
+    res.status(204).json({message: "Comment deleted"})
   },
 };
 

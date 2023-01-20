@@ -133,7 +133,7 @@ const Post = ({ post, setUpdated }) => {
               <CreateComment post_id={post._id} setUpdated={setUpdated} />
             </div>
             {comments.map((comment) => (
-              <Comment comment={comment} key={comment._id} />
+              <Comment comment={comment} setUpdated={setUpdated} key={comment._id} />
             ))}
           </div>
         }
