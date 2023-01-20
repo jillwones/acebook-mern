@@ -194,9 +194,9 @@ const UsersController = {
     // like data.friends.map for the friends bit
     const userId = req.params.userId;
     const user = await User.findById(userId)
-        .populate("friends", "name")
-        .populate("friendRequestsReceived", "name")
-        .populate("friendRequestsSent", "name")
+        .populate("friends", "name profilePicture")
+        .populate("friendRequestsReceived", "name profilePicture")
+        .populate("friendRequestsSent", "name profilePicture")
         .exec();
     res.status(200).json({ user });
   },

@@ -23,12 +23,17 @@ const Friend = ({ friend, setFriendsUpdated }) => {
       });
   }
 
+  console.log(friend.profilePicture);
   return (
     <div className="friend-container">
-      {/* Add profile picture of person sending friend request, with link to their profile */}
-      <Link to={`/users/${friend._id}`} className="username-link">
-        <h3 className="f-username">{ friend.name }</h3>
-      </Link>
+      <div className="f-picture-and-name-container">
+        <div className="f-profile-picture-div">
+          <img className="f-profile-picture" src={friend.profilePicture} />
+        </div>
+        <Link to={`/users/${friend._id}`} className="username-link">
+          <h3 className="f-username">{ friend.name }</h3>
+        </Link>
+      </div>
       <button className="f-remove-friend-button" onClick={handleClickRemove}>Remove friend</button>
     </div>
   );
