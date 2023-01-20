@@ -2,7 +2,24 @@ import './Comment.css';
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { Link } from "react-router-dom";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, setUpdated }) => {
+  const createdBy = comment.author._id;
+  const currentUser = window.localStorage.getItem("user_id");
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    let response = await fetch(`/comments/${comment._id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    if (response.status === 204) {
+      setUpdated(true);
+    }
+  }
   
   return (
     <div className="comment">
@@ -11,8 +28,11 @@ const Comment = ({ comment }) => {
             <h4 className="comment-author">{comment.author.name}</h4>
           </Link>
         <p className="timestamp">{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</p>
-      </div>  
+      </div>    
       <p className="comment-message">{ comment.message }</p>
+      { createdBy === currentUser ?
+        <button className="delete-comment-button" onClick={handleDelete}>Delete</button> : null
+      }
       <img
           className='post-image'
           src={comment.image}
@@ -20,5 +40,6 @@ const Comment = ({ comment }) => {
     </div>
   );
 }
+
 
 export default Comment;
