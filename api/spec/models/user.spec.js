@@ -78,7 +78,7 @@ describe("User model", () => {
           "coverPictureUrl"
         );
       } catch (err) {
-        expect(err).toEqual(Error("Email is not valid")); // Write your test code here
+        expect(err).toEqual(Error("Email is not valid"));
       }
     });
 
