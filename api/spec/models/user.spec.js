@@ -58,4 +58,108 @@ describe("User model", () => {
       });
     });
   });
+
+  describe("signup static method", () => {
+    it("should throw an error if all fields are not filled", async () => {
+      try {
+        await User.signup("John Doe", "johndoe@example.com");
+      } catch (err) {
+        expect(err).toEqual(Error("All fields must be filled"));
+      }
+    });
+
+    it("should throw an error if email is not valid", async () => {
+      try {
+        await User.signup(
+          "John Doe",
+          "johndoe@example",
+          "ABCabc123!",
+          "profilePictureUrl",
+          "coverPictureUrl"
+        );
+      } catch (err) {
+        expect(err).toEqual(Error("Email is not valid")); // Write your test code here
+      }
+    });
+
+    it("should throw an error if an email is already in use", async () => {
+      await User.signup(
+        "Will Jones",
+        "will@will.com",
+        "ABCabc123!",
+        "profilePictureUrl",
+        "coverPictureUrl"
+      );
+      try {
+        await User.signup(
+          "John Doe",
+          "will@will.com",
+          "password12345!",
+          "profilePictureUrl",
+          "coverPictureUrl"
+        );
+      } catch (err) {
+        expect(err).toEqual(Error("Email already in use"));
+      }
+    });
+
+    it("should throw an error if the password is too weak", async () => {
+      try {
+        await User.signup("Will Jones", "will@will.com", "1234");
+      } catch (err) {
+        expect(err).toEqual(
+          Error(
+            "Password not strong enough - must include uppercase, lowercase, numbers, punctuation - min 8 chars"
+          )
+        );
+      }
+    });
+
+    it("should return the user if no errors thrown", async () => {
+      const user = await User.signup(
+        "Will Jones",
+        "will@will.com",
+        "ABCabc123!"
+      );
+
+      expect(user).not.toBeNull();
+      expect(user).toHaveProperty("name", "Will Jones");
+    });
+  });
+
+  describe("login static method", () => {
+    it("should throw an error if all fields are not filled", async () => {
+      try {
+        await User.login("johndoe@example.com");
+      } catch (err) {
+        expect(err).toEqual(Error("All fields must be filled"));
+      }
+    });
+
+    it("should throw an error if invalid email", async () => {
+      await User.signup("Will Jones", "will@will.com", "ABCabc123!");
+      try {
+        await User.login("bob@bob.com", "1234");
+      } catch (err) {
+        expect(err).toEqual(Error("Incorrect email"));
+      }
+    });
+
+    it("should throw an error if invalid password", async () => {
+      await User.signup("Will Jones", "will@will.com", "ABCabc123!");
+      try {
+        await User.login("will@will.com", "1234");
+      } catch (err) {
+        expect(err).toEqual(Error("Incorrect password"));
+      }
+    });
+
+    it("should return the user if no errors thrown", async () => {
+      await User.signup("Will Jones", "will@will.com", "ABCabc123!");
+      const user = await User.login("will@will.com", "ABCabc123!");
+
+      expect(user).not.toBeNull();
+      expect(user).toHaveProperty("name", "Will Jones");
+    });
+  });
 });
