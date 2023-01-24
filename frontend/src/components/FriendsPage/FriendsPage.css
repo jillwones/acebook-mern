@@ -50,48 +50,47 @@
 .f-accept-friend-request-button {
   background-color: #2ECC40;
   color: #fff;
-  border: none; /* remove the default button border */
+  border: none;
   padding: 0.5rem 1rem; 
   margin-right: 2.5px;
   margin-left: auto;
-  border-radius: 4px; /* give the button rounded corners */
-  font-size: 0.8rem; /* set the font size */
-  cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
   width: 85px;
 }
 
 .f-reject-friend-request-button {
   background-color: #FF4136;
   color: #fff;
-  border: none; /* remove the default button border */
-  padding: 0.5rem 1rem; /* add some padding to the button */
+  border: none;
+  padding: 0.5rem 1rem;
   margin-left: 2.5px;
-  /* margin-left: auto; */
-  border-radius: 4px; /* give the button rounded corners */
-  font-size: 0.8rem; /* set the font size */
-  cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
   width: 85px;
 }
 
 .f-cancel-friend-request-button {
   background-color: #FF851B;
   color: #fff;
-  border: none; /* remove the default button border */
-  padding: 0.5rem 1rem; /* add some padding to the button */
-  border-radius: 4px; /* give the button rounded corners */
-  font-size: 0.8rem; /* set the font size */
-  cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
   width: 175px;
 }
 
 .f-remove-friend-button {
   background-color: #FF4136;
   color: #fff;
-  border: none; /* remove the default button border */
-  padding: 0.5rem 1rem; /* add some padding to the button */
-  border-radius: 4px; /* give the button rounded corners */
-  font-size: 0.8rem; /* set the font size */
-  cursor: pointer; /* change the cursor to a pointer when hovering over the button */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
   width: 175px;
 }
 
